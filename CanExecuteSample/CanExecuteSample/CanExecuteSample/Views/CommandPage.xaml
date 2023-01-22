@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CanExecuteSample.Views.CommandPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:CanExecuteSample.ViewModels"
+    Title="{Binding Title}"
+    x:DataType="viewModels:CommandViewModel">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="20"
+            HorizontalOptions="CenterAndExpand"
+            Spacing="20"
+            VerticalOptions="CenterAndExpand">
+            <Button Command="{Binding FirstCommand}" Text="Normal Command 1" />
+
+            <Button Command="{Binding SecondCommand}" Text="Normal Command 2" />
+
+            <Button Command="{Binding RiskyCommand}" Text="Risky Command" />
+
+            <Button
+                Command="{Binding StringCommand}"
+                CommandParameter="Hello World"
+                Text="Command With Parameter (string)" />
+
+            <Button Command="{Binding IntCommand}" Text="Command With Parameter (int)">
+                <Button.CommandParameter>
+                    <x:Int32>69420</x:Int32>
+                </Button.CommandParameter>
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
