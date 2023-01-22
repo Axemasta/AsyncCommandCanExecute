@@ -20,8 +20,17 @@ namespace CanExecuteSample.ViewModels.Base
                 if (SetProperty(ref canExecute, value))
                 {
                     RaiseCanExecuteChangedChanged();
+                    IsBusy = !CanExecute;
                 }
             }
+        }
+
+        private bool isBusy = false;
+
+        public bool IsBusy
+        {
+            get => isBusy;
+            set => SetProperty(ref isBusy, value);
         }
 
         public IAsyncCommand CreateCommand(Func<Task> handler)
